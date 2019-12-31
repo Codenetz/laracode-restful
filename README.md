@@ -9,6 +9,7 @@ Laravel version - 6.x
 - [Structure overview](#structure-overview)
 - [Doctrine](#doctrine)
 - [Model](#model)
+- [Available endpoints](#available-endpoints)
 
 ## Installation
 
@@ -160,6 +161,21 @@ class Users extends Controller
     }
 }
 ```
+
+## Available endpoints
+
+Project comes with some available endpoints for example purpose.
+
+| Method   | URI              | Action                                                             | Middleware                   |
+|----------|------------------|--------------------------------------------------------------------|------------------------------|
+| POST     | api/oauth/token  | Laravel\Passport\Http\Controllers\AccessTokenController@issueToken | throttle                     |
+| POST     | api/product      | App\Modules\Shop\Controllers\Product@create                        | api,auth:api,role:ROLE_ADMIN |
+| GET|HEAD | api/product      | App\Modules\Shop\Controllers\Product@fetchSingle                   | api                          |
+| PUT      | api/product/{id} | App\Modules\Shop\Controllers\Product@edit                          | api,auth:api,role:ROLE_ADMIN |
+| DELETE   | api/product/{id} | App\Modules\Shop\Controllers\Product@delete                        | api,auth:api,role:ROLE_ADMIN |
+| GET|HEAD | api/products     | App\Modules\Shop\Controllers\Product@fetch                         | api                          |
+| POST     | api/user/signup  | App\Modules\User\Controllers\Signup@createAccount                  | api                          |
+| GET|HEAD | api/users        | App\Modules\User\Controllers\Users@fetch                           | api,auth:api,role:ROLE_ADMIN |
 
 ## License
 

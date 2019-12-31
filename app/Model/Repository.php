@@ -53,6 +53,10 @@ abstract class Repository
         return DB::table(is_null($tableName) ? $this->model->getTable() : $tableName);
     }
 
+    /**
+     * @param array $objects
+     * @return mixed
+     */
     protected function hydrate(array $objects = [])
     {
         return $this->model::hydrate($objects);
