@@ -94,7 +94,8 @@ abstract class Repository
      */
     public function insert(array $data)
     {
-        return $this->model->create($data);
+        $item = $this->model->create($data);
+        return $this->model->find($item->id);
     }
 
     /**
